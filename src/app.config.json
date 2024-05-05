@@ -1,0 +1,4 @@
+{
+    "production": false,
+    "baseUrl": "https://localhost:44300"
+}

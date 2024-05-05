@@ -1,0 +1,44 @@
+<form #form="ngForm" [formGroup]="orderForm" (ngSubmit)="save($event)" novalidate autocomplete="off">
+    <div class="card card-light">
+        <div class="card-body">
+            <div class="row">
+                <div class="col mb-4 stockSymbol">
+                    <mat-label class="mb-0">Stock Symbol<span class="text-danger">*</span></mat-label>
+                    <mat-form-field class="w-100">
+                        <mat-label>Stock Symbol</mat-label>
+                        <input matInput formControlName="stockSymbol"/>
+                    </mat-form-field>
+                    <div *ngIf="saveClicked">
+                        <mat-error *ngIf="stockSymbol?.errors?.['required']" class="text-danger">Stock Symbol is required.</mat-error>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-4 type">
+                    <mat-label class="mb-0 type">Type<span class="text-danger">*</span>
+                    </mat-label>
+                    <select formControlName="type" class="form-select p-1 px-3">
+                        <option value="" disabled selected>Select Type</option>
+                        <option *ngFor="let type of orderTypeList" [value]="type">{{type}}</option>
+                    </select>
+                    <div *ngIf="saveClicked">
+                        <mat-error *ngIf="type?.errors?.['required']" class="text-danger">Order Type is required.</mat-error>
+                    </div>
+                </div>
+                
+                <div class="col mb-4 quantity">
+                    <mat-label class="mb-0">Quantity<span class="text-danger">*</span>
+                    </mat-label>
+                    <mat-form-field class="w-100">
+                        <mat-label>Quantity</mat-label>
+                        <input matInput formControlName="quantity"/>
+                    </mat-form-field>
+                    <div *ngIf="saveClicked">
+                        <mat-error *ngIf="quantity?.errors?.['required']" class="text-danger">Quantity is required.</mat-error>
+                        <mat-error *ngIf="quantity?.errors?.['pattern']">Invalid Format</mat-error>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

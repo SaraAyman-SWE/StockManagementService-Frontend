@@ -1,0 +1,16 @@
+<div>
+    <button mat-button class="close-icon" [mat-dialog-close]="true">
+        <mat-icon>close</mat-icon>
+    </button>
+    <h1 mat-dialog-title>Order</h1>
+    <div mat-dialog-content class="">
+        <app-order-editor #orderEditor></app-order-editor>
+    </div>
+    <div class="text-end mt-2">
+        <button mat-raised-button class="py-1 px-4 rounded btn btn-dark" [disabled]="orderEditor.isLoadingChanges" (click)="orderEditor.save($event)"
+        >
+            {{ !orderEditor.isLoadingChanges ? "Add" : "Adding"}}
+            <i class="fa fa-spinner fa-spin" *ngIf="orderEditor.isLoadingChanges"></i>
+        </button>
+    </div>
+</div>

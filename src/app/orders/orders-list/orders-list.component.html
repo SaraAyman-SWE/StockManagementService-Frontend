@@ -1,0 +1,26 @@
+<div class="row my-3 mx-auto">
+  <button class="col-md-2 btn btn-dark d-flex justify-content-center me-2" (click)="openAddOrderDialog()">
+    <mat-icon class="mat-button-icon me-1">add</mat-icon> Order
+  </button>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Order Type</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orderList;let i=index">
+      <th scope="row">i</th>
+      <td>{{order.stockSymbol}}</td>
+      <td>{{order.type}}</td>
+      <td>{{order.quantity}}</td>
+      <td>{{order.createdAt}}</td>
+    </tr>
+  </tbody>
+</table>
